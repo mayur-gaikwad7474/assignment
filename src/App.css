@@ -1,10 +1,8 @@
 .container {
-  height: 100vh;
   padding: 50px;
   background-color: #dcdcdc;
   display: flex;
   justify-content: space-around;
-  overflow: scroll;
 }
 
 .input-container {
@@ -37,6 +35,7 @@
   margin-top: 15px;
   border-radius: 10px;
   position: relative;
+  overflow: hidden;
 }
 
 .edit {
@@ -49,4 +48,14 @@
   text-align: center;
   border-radius: 30px;
   cursor: pointer;
+}
+
+img {
+  height: 150px;
+  width: 150px;
+  object-fit: contain;
+}
+
+video {
+  object-fit: contain;
 }
