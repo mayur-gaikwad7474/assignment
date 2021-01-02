@@ -20,9 +20,11 @@ const App = () => {
   }
 
   const uploadPost = () => {
-    if (content === "" || tags === "" || file === "") return alert("plz fill all fields")
-    let type = file.type
-    type = type.substring(0, 5)
+    let type
+    if (file !== "") {
+      type = file.type
+      type = type.substring(0, 5)
+    }
     if (id !== null) {
       const updatedArray = arrayOfPost.map(data => {
         if (data.id === id) {
@@ -51,6 +53,7 @@ const App = () => {
           fileURL: fileURL
         }
       }
+      console.log(data)
       setarrayOfPost((prev) => [...prev, data])
     }
     setcontent("")
@@ -109,10 +112,10 @@ const App = () => {
                 })
               }</div>
               {
-                data.resource.type === "image" ? <img src={data.resource.fileURL} alt="" /> :
+                data.resource.type !== undefined ? data.resource.type === "image" ? <img src={data.resource.fileURL} alt="" /> :
                   <video width="150" height="150" controls>
                     <source src={data.resource.fileURL} type="video/mp4" />
-                  </video>
+                  </video> : null
               }
             </div>
           })
